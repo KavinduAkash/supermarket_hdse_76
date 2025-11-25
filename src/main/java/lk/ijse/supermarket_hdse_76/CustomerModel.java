@@ -22,6 +22,7 @@ public class CustomerModel {
              return results>0;
     }
     
+    // use customerDTO here
     public boolean updateCustomer(CustomerDTO customerDTO) throws SQLException {
              Connection conn = DBConnection.getInstance().getConnection();
             
@@ -37,5 +38,21 @@ public class CustomerModel {
              int results = pstm.executeUpdate();
              
              return results>0;
+    }
+    
+    public boolean deleteCustomer(String id) throws SQLException {
+    
+             Connection conn = DBConnection.getInstance().getConnection();
+            
+             String sql = "DELETE FROM customer WHERE id=?";
+             
+             PreparedStatement pstm = conn.prepareStatement(sql);
+
+             pstm.setInt(1, Integer.parseInt(id));
+             
+             int results = pstm.executeUpdate();
+             
+             return results>0;
+        
     }
 }
