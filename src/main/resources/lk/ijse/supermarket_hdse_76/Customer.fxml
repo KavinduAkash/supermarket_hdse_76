@@ -85,7 +85,7 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="434.0" layoutY="280.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="99.0" text="Update">
+                  <Button alignment="CENTER" layoutX="434.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleUpdateCustomer" prefHeight="53.0" prefWidth="99.0" text="Update">
                      <font>
                         <Font size="20.0" />
                      </font>

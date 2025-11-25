@@ -108,4 +108,40 @@ public class CustomerController {
         
     }
     
+    @FXML
+    private void handleUpdateCustomer() {
+    
+        try {
+        
+            String id = idField.getText();
+            String name = nameField.getText();
+            String address = addressField.getText();
+            String salary = salaryField.getText();
+            
+             Connection conn = DBConnection.getInstance().getConnection();
+            
+             String sql = "UPDATE customer SET name=?, address=?, salary=? WHERE id=?";
+             
+             PreparedStatement pstm = conn.prepareStatement(sql);
+
+             pstm.setString(1, name);
+             pstm.setString(2, address);
+             pstm.setDouble(3, Double.parseDouble(salary));
+             pstm.setInt(4, Integer.parseInt(id));
+             
+             int results = pstm.executeUpdate();
+            
+             if(results > 0) {
+                 new Alert(Alert.AlertType.INFORMATION, "Customer updated successfully!").show();
+             } else {
+                 new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
+             }
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
+        }
+        
+    }
+    
 }
