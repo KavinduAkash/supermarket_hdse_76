@@ -113,20 +113,13 @@ public class CustomerController {
             String address = addressField.getText();
             String salary = salaryField.getText();
             
-             Connection conn = DBConnection.getInstance().getConnection();
-            
-             String sql = "UPDATE customer SET name=?, address=?, salary=? WHERE id=?";
+             CustomerModel customerModel = new CustomerModel();
              
-             PreparedStatement pstm = conn.prepareStatement(sql);
-
-             pstm.setString(1, name);
-             pstm.setString(2, address);
-             pstm.setDouble(3, Double.parseDouble(salary));
-             pstm.setInt(4, Integer.parseInt(id));
+             CustomerDTO customerDTO = new CustomerDTO(Integer.parseInt(id), name, address, Double.parseDouble(salary));
              
-             int results = pstm.executeUpdate();
+             boolean isUpdated = customerModel.updateCustomer(customerDTO);
             
-             if(results > 0) {
+             if(isUpdated) {
                  new Alert(Alert.AlertType.INFORMATION, "Customer updated successfully!").show();
              } else {
                  new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();

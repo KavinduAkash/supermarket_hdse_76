@@ -6,20 +6,36 @@ import java.sql.SQLException;
 
 public class CustomerModel {
  
-    public boolean saveCustomer(String name, String address, double salary) throws SQLException {
+    public boolean saveCustomer(CustomerDTO customerDTO) throws SQLException {
              Connection conn = DBConnection.getInstance().getConnection();
             
              String sql = "INSERT INTO customer (name, address, salary) VALUES (?,?,?)";
              
              PreparedStatement pstm = conn.prepareStatement(sql);
 
-             pstm.setString(1, name);
-             pstm.setString(2, address);
-             pstm.setDouble(3, salary);
+             pstm.setString(1, customerDTO.getName());
+             pstm.setString(2, customerDTO.getAddress());
+             pstm.setDouble(3, customerDTO.getSalary());
              
              int results = pstm.executeUpdate();
              
              return results>0;
     }
     
+    public boolean updateCustomer(CustomerDTO customerDTO) throws SQLException {
+             Connection conn = DBConnection.getInstance().getConnection();
+            
+             String sql = "UPDATE customer SET name=?, address=?, salary=? WHERE id=?";
+             
+             PreparedStatement pstm = conn.prepareStatement(sql);
+
+             pstm.setString(1, customerDTO.getName());
+             pstm.setString(2, customerDTO.getAddress());
+             pstm.setDouble(3, customerDTO.getSalary());
+             pstm.setInt(4, customerDTO.getId());
+             
+             int results = pstm.executeUpdate();
+             
+             return results>0;
+    }
 }
