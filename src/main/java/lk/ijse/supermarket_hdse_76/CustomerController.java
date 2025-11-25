@@ -72,25 +72,13 @@ public class CustomerController {
             if(event.getCode() == KeyCode.ENTER) {
                 String id = idField.getText();
 
-                Connection conn = DBConnection.getInstance().getConnection();
-                String sql = "SELECT * FROM customer WHERE id=?";
+                CustomerModel customerModel = new CustomerModel();
+                CustomerDTO customerDTO = customerModel.searchCustomer(id);
                 
-                PreparedStatement ptsm = conn.prepareStatement(sql);
-                ptsm.setInt(1, Integer.parseInt(id));
-                
-                // SELECT - executeQuery , INSERT, UPDATE, DELETE - executeUpdate
-            
-                ResultSet rs = ptsm.executeQuery();
-                
-                if(rs.next()) {
-                    int cusid = rs.getInt("id");
-                    String cusName = rs.getString("name");
-                    String cusAddress = rs.getString("address");
-                    double cusSalary = rs.getDouble("salary");
-                
-                    nameField.setText(cusName);
-                    addressField.setText(cusAddress);
-                    salaryField.setText(String.valueOf(cusSalary));
+                if(customerDTO!=null) {
+                    nameField.setText(customerDTO.getName());
+                    addressField.setText(customerDTO.getAddress());
+                    salaryField.setText(String.valueOf(customerDTO.getSalary()));
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Customer not found!").show();
                 }
@@ -130,8 +118,7 @@ public class CustomerController {
             new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
         }
         
-    }
-    
+    } 
     
     @FXML
     private void handleDeleteCustomer() {

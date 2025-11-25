@@ -2,6 +2,7 @@ package lk.ijse.supermarket_hdse_76;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CustomerModel {
@@ -22,7 +23,6 @@ public class CustomerModel {
              return results>0;
     }
     
-    // use customerDTO here
     public boolean updateCustomer(CustomerDTO customerDTO) throws SQLException {
              Connection conn = DBConnection.getInstance().getConnection();
             
@@ -54,5 +54,28 @@ public class CustomerModel {
              
              return results>0;
         
+    }
+    
+    public CustomerDTO searchCustomer(String id) throws SQLException {
+                Connection conn = DBConnection.getInstance().getConnection();
+                String sql = "SELECT * FROM customer WHERE id=?";
+                
+                PreparedStatement ptsm = conn.prepareStatement(sql);
+                ptsm.setInt(1, Integer.parseInt(id));
+            
+                ResultSet rs = ptsm.executeQuery();
+                
+                CustomerDTO customerDTO = null;
+                
+                if(rs.next()) {
+                    int cusid = rs.getInt("id");
+                    String cusName = rs.getString("name");
+                    String cusAddress = rs.getString("address");
+                    double cusSalary = rs.getDouble("salary");
+                    
+                    customerDTO = new CustomerDTO(cusid, cusName, cusAddress, cusSalary);
+                }
+                
+                return customerDTO;
     }
 }
