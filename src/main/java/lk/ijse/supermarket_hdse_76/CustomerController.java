@@ -11,9 +11,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -33,6 +35,12 @@ public class CustomerController implements Initializable {
     
     @FXML
     private TableView tableCustomer;
+    
+    @FXML
+    private TableColumn colId;
+    
+    @FXML
+    private TableColumn colName;
 
     
     private final CustomerModel customerModel = new CustomerModel();
@@ -40,6 +48,9 @@ public class CustomerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        
         loadCustomerTable();
         
     }
