@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class CustomerController {  
     
@@ -61,6 +63,15 @@ public class CustomerController {
         }
         
         System.out.println("Saved!!!");
+        
+    }
+    
+    @FXML
+    private void handleSearchCustomer(KeyEvent event) {
+        
+        if(event.getCode() == KeyCode.ENTER) {
+            
+        }
         
     }
     
