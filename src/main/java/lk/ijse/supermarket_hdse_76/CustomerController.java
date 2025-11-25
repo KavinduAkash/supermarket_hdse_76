@@ -36,7 +36,10 @@ public class CustomerController {
         try {
             
                CustomerModel customerModel = new CustomerModel();
-               boolean isSaved = customerModel.saveCustomer(name, address, Double.parseDouble(salary));
+               
+               CustomerDTO customerDTO = new CustomerDTO(name, address, Double.parseDouble(salary));
+               
+               boolean isSaved = customerModel.saveCustomer(customerDTO);
             
              if(isSaved) {
                  
