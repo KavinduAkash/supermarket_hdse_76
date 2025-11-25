@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerModel {
  
@@ -77,5 +79,30 @@ public class CustomerModel {
                 }
                 
                 return customerDTO;
+    }
+    
+    public List<CustomerDTO> getAllCustomers() throws SQLException {
+        Connection conn = DBConnection.getInstance().getConnection();
+        
+        String sql = "SELECT * FROM customer ORDER BY id DESC";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        
+        List<CustomerDTO> customerList =  new ArrayList<>();
+        
+        while(rs.next()) {
+            int cusId = rs.getInt("id");
+            String cusName = rs.getString("name");
+            String cusAddress = rs.getString("address");
+            double cusSalary = rs.getDouble("salary");
+            
+            CustomerDTO customerDTO = new CustomerDTO(cusId, cusName, cusAddress, cusSalary);
+            customerList.add(customerDTO);
+        }
+        
+        return customerList;
+        
     }
 }

@@ -1,16 +1,19 @@
 package lk.ijse.supermarket_hdse_76;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class CustomerController {  
+public class CustomerController implements Initializable {  
     
     @FXML
     private TextField idField;
@@ -23,6 +26,14 @@ public class CustomerController {
     
     @FXML
     private TextField salaryField;
+
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+     
+        loadCustomerTable();
+        
+    }
     
     @FXML
     private void saveCustomer() {
@@ -157,6 +168,12 @@ public class CustomerController {
         nameField.setText("");
         addressField.setText("");
         salaryField.setText("");
+    }
+    
+    private void loadCustomerTable() {
+    
+        
+        
     }
     
 }
