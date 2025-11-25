@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,6 +29,8 @@ public class CustomerController implements Initializable {
     private TextField salaryField;
 
     
+    private final CustomerModel customerModel = new CustomerModel();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      
@@ -45,8 +48,6 @@ public class CustomerController implements Initializable {
         System.out.println(name + " - " + address + " - " + salary);
         
         try {
-            
-               CustomerModel customerModel = new CustomerModel();
                
                CustomerDTO customerDTO = new CustomerDTO(name, address, Double.parseDouble(salary));
                
@@ -85,7 +86,6 @@ public class CustomerController implements Initializable {
             if(event.getCode() == KeyCode.ENTER) {
                 String id = idField.getText();
 
-                CustomerModel customerModel = new CustomerModel();
                 CustomerDTO customerDTO = customerModel.searchCustomer(id);
                 
                 if(customerDTO!=null) {
@@ -113,8 +113,6 @@ public class CustomerController implements Initializable {
             String name = nameField.getText();
             String address = addressField.getText();
             String salary = salaryField.getText();
-            
-             CustomerModel customerModel = new CustomerModel();
              
              CustomerDTO customerDTO = new CustomerDTO(Integer.parseInt(id), name, address, Double.parseDouble(salary));
              
@@ -141,7 +139,6 @@ public class CustomerController implements Initializable {
         
             String id = idField.getText();
             
-             CustomerModel customerModel = new CustomerModel();
              boolean isDeleted = customerModel.deleteCustomer(id);
             
              if(isDeleted) {
@@ -172,7 +169,14 @@ public class CustomerController implements Initializable {
     
     private void loadCustomerTable() {
     
+        try {
         
+            List<CustomerDTO> customerList = customerModel.getAllCustomers();
+            
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
         
     }
     
