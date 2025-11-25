@@ -41,6 +41,12 @@ public class CustomerController implements Initializable {
     
     @FXML
     private TableColumn colName;
+    
+    @FXML
+    private TableColumn colAddress;
+    
+    @FXML
+    private TableColumn colSalary;
 
     
     private final CustomerModel customerModel = new CustomerModel();
@@ -50,6 +56,8 @@ public class CustomerController implements Initializable {
      
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
         
         loadCustomerTable();
         

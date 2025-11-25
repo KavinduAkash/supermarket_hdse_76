@@ -130,8 +130,8 @@
               <columns>
                 <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="colName" prefWidth="309.54439544677734" text="Name" />
-                  <TableColumn prefWidth="216.4105224609375" text="Address" />
-                  <TableColumn prefWidth="167.0" text="Salary" />
+                  <TableColumn fx:id="colAddress" prefWidth="216.4105224609375" text="Address" />
+                  <TableColumn fx:id="colSalary" prefWidth="167.0" text="Salary" />
               </columns>
             </TableView>
          </children>
