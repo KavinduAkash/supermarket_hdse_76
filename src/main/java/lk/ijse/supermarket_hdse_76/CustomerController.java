@@ -34,19 +34,11 @@ public class CustomerController {
         System.out.println(name + " - " + address + " - " + salary);
         
         try {
-            Connection conn = DBConnection.getInstance().getConnection();
             
-             String sql = "INSERT INTO customer (name, address, salary) VALUES (?,?,?)";
-             
-             PreparedStatement pstm = conn.prepareStatement(sql);
-
-             pstm.setString(1, name);
-             pstm.setString(2, address);
-             pstm.setDouble(3, Double.parseDouble(salary));
-             
-             int results = pstm.executeUpdate();
+               CustomerModel customerModel = new CustomerModel();
+               boolean isSaved = customerModel.saveCustomer(name, address, Double.parseDouble(salary));
             
-             if(results > 0) {
+             if(isSaved) {
                  
                  Alert alert = new Alert(Alert.AlertType.INFORMATION);
                  alert.setTitle("Customer Mgt");
