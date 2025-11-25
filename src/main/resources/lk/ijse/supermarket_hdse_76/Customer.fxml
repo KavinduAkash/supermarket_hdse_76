@@ -95,7 +95,7 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="652.0" layoutY="280.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="99.0" text="Reset">
+                  <Button alignment="CENTER" layoutX="652.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleResetFileds" prefHeight="53.0" prefWidth="99.0" text="Reset">
                      <font>
                         <Font size="20.0" />
                      </font>

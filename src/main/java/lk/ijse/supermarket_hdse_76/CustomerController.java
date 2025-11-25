@@ -48,6 +48,8 @@ public class CustomerController {
                  alert.setHeaderText("Customer saved successfully!");
                  alert.show();
                  
+                 cleanFileds();
+                 
              } else {
                  
                  Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -109,6 +111,7 @@ public class CustomerController {
             
              if(isUpdated) {
                  new Alert(Alert.AlertType.INFORMATION, "Customer updated successfully!").show();
+                 cleanFileds();
              } else {
                  new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
              }
@@ -132,6 +135,7 @@ public class CustomerController {
             
              if(isDeleted) {
                  new Alert(Alert.AlertType.INFORMATION, "Customer deleted successfully!").show();
+                 cleanFileds();
              } else {
                  new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
              }
@@ -141,6 +145,18 @@ public class CustomerController {
             new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
         }
         
+    }
+    
+    @FXML
+    private void handleResetFileds() {
+        cleanFileds();
+    }
+    
+    private void cleanFileds() {
+        idField.setText("");
+        nameField.setText("");
+        addressField.setText("");
+        salaryField.setText("");
     }
     
 }
