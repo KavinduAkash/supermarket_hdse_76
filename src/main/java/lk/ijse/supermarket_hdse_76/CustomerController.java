@@ -6,9 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -27,6 +30,9 @@ public class CustomerController implements Initializable {
     
     @FXML
     private TextField salaryField;
+    
+    @FXML
+    private TableView tableCustomer;
 
     
     private final CustomerModel customerModel = new CustomerModel();
@@ -173,6 +179,13 @@ public class CustomerController implements Initializable {
         
             List<CustomerDTO> customerList = customerModel.getAllCustomers();
             
+            ObservableList<CustomerDTO> obList = FXCollections.observableArrayList();
+            
+            for (CustomerDTO customerDTO : customerList) {
+                obList.add(customerDTO);
+            }
+            
+            tableCustomer.setItems(obList);
             
         } catch(Exception e) {
             e.printStackTrace();
