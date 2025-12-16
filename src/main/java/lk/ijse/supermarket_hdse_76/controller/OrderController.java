@@ -71,6 +71,9 @@ public class OrderController implements Initializable {
     private TableView<OrderItemTM> tblOrderItem;
     
     
+    @FXML
+    private Label lblTotalValue;
+        
     
     private CustomerModel customerModel = new CustomerModel();
     private ItemModel itemModel = new ItemModel();
@@ -170,22 +173,43 @@ public class OrderController implements Initializable {
         
         String itemId = comboItemId.getSelectionModel().getSelectedItem();
         String itemName = lblItemNameValue.getText();
-        String itemQty = lblItemQtyValue.getText();
+        String itemQty = lblItemQtyValue.getText(); // availabe qty
         String itemPrice = lblItemPriceValue.getText();
-        String orderQty = orderQtyField.getText();
+        String orderQty = orderQtyField.getText(); // ordered qty
        
-        
-        OrderItemTM orderItemTM = new OrderItemTM(
+        if(Integer.parseInt(itemQty) >= Integer.parseInt(orderQty)) {
+
+            OrderItemTM orderItemTM = new OrderItemTM(
                 Integer.parseInt(itemId),
                 itemName,
                 Double.parseDouble(itemPrice),
                 Integer.parseInt(orderQty),
                 Double.parseDouble(itemPrice)*Integer.parseInt(orderQty)
-        );
+            );
         
-        orderItemObList.add(orderItemTM);
+            orderItemObList.add(orderItemTM);
         
+            loadOrderItemTbl();
+            
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Invalid Qty!").show();
+        }
+       
+    }
+    
+    
+    private void loadOrderItemTbl() {
+    
         tblOrderItem.setItems(orderItemObList);
+        
+        double total = 0.0;
+        for (OrderItemTM orderItemTM : orderItemObList) {
+            // total = total + orderItemTM.getItemTotal();
+            total += orderItemTM.getItemTotal();
+        }
+        
+        lblTotalValue.setText(String.valueOf(total));
+        
     }
 
     
