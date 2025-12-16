@@ -92,13 +92,13 @@
             </AnchorPane>
             <AnchorPane prefHeight="266.0" prefWidth="800.0">
                <children>
-                  <TableView layoutX="19.0" layoutY="14.0" prefHeight="240.0" prefWidth="762.0">
+                  <TableView fx:id="tblOrderItem" layoutX="19.0" layoutY="14.0" prefHeight="240.0" prefWidth="762.0">
                     <columns>
-                      <TableColumn prefWidth="96.0" text="ITEM ID" />
-                      <TableColumn prefWidth="282.0" text="ITEM NAME" />
-                        <TableColumn prefWidth="111.0" text="UNIT PRICE" />
-                        <TableColumn prefWidth="127.0" text="ORDER QTY" />
-                        <TableColumn prefWidth="145.0" text="ITEM TOTAL" />
+                      <TableColumn fx:id="colItemId" prefWidth="96.0" text="ITEM ID" />
+                      <TableColumn fx:id="colItemName" prefWidth="282.0" text="ITEM NAME" />
+                        <TableColumn fx:id="colItemPrice" prefWidth="111.0" text="UNIT PRICE" />
+                        <TableColumn fx:id="colOrderQty" prefWidth="127.0" text="ORDER QTY" />
+                        <TableColumn fx:id="colItemTotal" prefWidth="145.0" text="ITEM TOTAL" />
                     </columns>
                   </TableView>
                </children>

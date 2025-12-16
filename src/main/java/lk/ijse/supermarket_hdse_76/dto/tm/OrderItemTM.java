@@ -6,12 +6,12 @@ public class OrderItemTM {
     private String itemName;
     private double unitPrice;
     private int orderQty;
-    private int itemTotal;
+    private double itemTotal;
 
     public OrderItemTM() {
     }
 
-    public OrderItemTM(int itemId, String itemName, double unitPrice, int orderQty, int itemTotal) {
+    public OrderItemTM(int itemId, String itemName, double unitPrice, int orderQty, double itemTotal) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.unitPrice = unitPrice;
@@ -51,11 +51,11 @@ public class OrderItemTM {
         this.orderQty = orderQty;
     }
 
-    public int getItemTotal() {
+    public double getItemTotal() {
         return itemTotal;
     }
 
-    public void setItemTotal(int itemTotal) {
+    public void setItemTotal(double itemTotal) {
         this.itemTotal = itemTotal;
     }
 
@@ -63,4 +63,6 @@ public class OrderItemTM {
     public String toString() {
         return "OrderItemTM{" + "itemId=" + itemId + ", itemName=" + itemName + ", unitPrice=" + unitPrice + ", orderQty=" + orderQty + ", itemTotal=" + itemTotal + '}';
     }
+
+    
 }

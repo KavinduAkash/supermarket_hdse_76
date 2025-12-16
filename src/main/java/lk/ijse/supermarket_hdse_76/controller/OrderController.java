@@ -11,7 +11,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.supermarket_hdse_76.dto.CustomerDTO;
 import lk.ijse.supermarket_hdse_76.dto.ItemDTO;
 import lk.ijse.supermarket_hdse_76.dto.tm.OrderItemTM;
@@ -47,6 +50,28 @@ public class OrderController implements Initializable {
     @FXML
     private TextField orderQtyField;
     
+    
+    
+    @FXML
+    private TableColumn<OrderItemTM, Integer> colItemId;
+
+    @FXML
+    private TableColumn<OrderItemTM, String> colItemName;
+
+    @FXML
+    private TableColumn<OrderItemTM, Double> colItemPrice;
+
+    @FXML
+    private TableColumn<OrderItemTM, Double> colItemTotal;
+
+    @FXML
+    private TableColumn<OrderItemTM, Integer> colOrderQty;
+    
+    @FXML
+    private TableView<OrderItemTM> tblOrderItem;
+    
+    
+    
     private CustomerModel customerModel = new CustomerModel();
     private ItemModel itemModel = new ItemModel();
     
@@ -54,6 +79,13 @@ public class OrderController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        colItemId.setCellValueFactory(new PropertyValueFactory<>("itemId"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        colItemPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colOrderQty.setCellValueFactory(new PropertyValueFactory<>("orderQty"));
+        colItemTotal.setCellValueFactory(new PropertyValueFactory<>("itemTotal"));
+        
         loadCustomerIds();
         loadItemIds();
     } 
@@ -152,6 +184,8 @@ public class OrderController implements Initializable {
         );
         
         orderItemObList.add(orderItemTM);
+        
+        tblOrderItem.setItems(orderItemObList);
     }
 
     
