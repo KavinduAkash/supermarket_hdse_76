@@ -38,4 +38,12 @@ public class ItemModel {
         return itemDTO;
     }
     
+    public boolean decreaseItemQty(int itemId, int qty) throws SQLException {
+    
+        boolean isUpdated = CrudUtil.execute("UPDATE item SET qty=qty-? WHEREXXXXXXXXXXXXX id=?",
+                qty,
+                itemId);
+        
+        return isUpdated;
+    }
 }

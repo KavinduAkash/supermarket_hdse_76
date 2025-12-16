@@ -220,25 +220,37 @@ public class OrderController implements Initializable {
     @FXML
     private void handlePlaceOrder(ActionEvent event) {
 
-        String customerId = comboCustomerId.getSelectionModel().getSelectedItem();
-        // orderItemObList
+        try {
+            String customerId = comboCustomerId.getSelectionModel().getSelectedItem();
+            // orderItemObList
+
+            List<OrderItemDTO> orderItems = new ArrayList<>();
+
+            for (OrderItemTM orderItemTM : orderItemObList) {
+
+                // (int itemId, int qty, double price)
+                OrderItemDTO orderItemDTO = new OrderItemDTO(
+                        orderItemTM.getItemId(), 
+                        orderItemTM.getOrderQty(), 
+                        orderItemTM.getUnitPrice()
+                );
+
+                orderItems.add(orderItemDTO);
+            }
+
+            // (int customerId, Date orderDate, List<OrderItemDTO> orderItems)
+            OrderDTO orderDTO = new OrderDTO(Integer.parseInt(customerId), new Date(), orderItems);
         
-        List<OrderItemDTO> orderItems = new ArrayList<>();
+            boolean isOrderPlaced = orderModel.placeOrder(orderDTO);
         
-        for (OrderItemTM orderItemTM : orderItemObList) {
+            if(isOrderPlaced) {
+                new Alert(Alert.AlertType.INFORMATION, "Order placed successfully!").show();
+            }
             
-            // (int itemId, int qty, double price)
-            OrderItemDTO orderItemDTO = new OrderItemDTO(
-                    orderItemTM.getItemId(), 
-                    orderItemTM.getOrderQty(), 
-                    orderItemTM.getUnitPrice()
-            );
-            
-            orderItems.add(orderItemDTO);
+        } catch(Exception e) {
+            e.printStackTrace();
+             new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
         }
         
-        // (int customerId, Date orderDate, List<OrderItemDTO> orderItems)
-        OrderDTO orderDTO = new OrderDTO(Integer.parseInt(customerId), new Date(), orderItems);
-        orderModel.placeOrder(orderDTO);
     }
 }
