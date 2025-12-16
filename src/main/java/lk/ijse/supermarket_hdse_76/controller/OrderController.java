@@ -1,6 +1,8 @@
 package lk.ijse.supermarket_hdse_76.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -17,9 +19,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.supermarket_hdse_76.dto.CustomerDTO;
 import lk.ijse.supermarket_hdse_76.dto.ItemDTO;
+import lk.ijse.supermarket_hdse_76.dto.OrderDTO;
+import lk.ijse.supermarket_hdse_76.dto.OrderItemDTO;
 import lk.ijse.supermarket_hdse_76.dto.tm.OrderItemTM;
 import lk.ijse.supermarket_hdse_76.model.CustomerModel;
 import lk.ijse.supermarket_hdse_76.model.ItemModel;
+import lk.ijse.supermarket_hdse_76.model.OrderModel;
 
 public class OrderController implements Initializable {
 
@@ -77,6 +82,7 @@ public class OrderController implements Initializable {
     
     private CustomerModel customerModel = new CustomerModel();
     private ItemModel itemModel = new ItemModel();
+    private OrderModel orderModel = new OrderModel();
     
     private ObservableList<OrderItemTM> orderItemObList = FXCollections.observableArrayList();
     
@@ -197,7 +203,6 @@ public class OrderController implements Initializable {
        
     }
     
-    
     private void loadOrderItemTbl() {
     
         tblOrderItem.setItems(orderItemObList);
@@ -212,5 +217,28 @@ public class OrderController implements Initializable {
         
     }
 
-    
+    @FXML
+    private void handlePlaceOrder(ActionEvent event) {
+
+        String customerId = comboCustomerId.getSelectionModel().getSelectedItem();
+        // orderItemObList
+        
+        List<OrderItemDTO> orderItems = new ArrayList<>();
+        
+        for (OrderItemTM orderItemTM : orderItemObList) {
+            
+            // (int itemId, int qty, double price)
+            OrderItemDTO orderItemDTO = new OrderItemDTO(
+                    orderItemTM.getItemId(), 
+                    orderItemTM.getOrderQty(), 
+                    orderItemTM.getUnitPrice()
+            );
+            
+            orderItems.add(orderItemDTO);
+        }
+        
+        // (int customerId, Date orderDate, List<OrderItemDTO> orderItems)
+        OrderDTO orderDTO = new OrderDTO(Integer.parseInt(customerId), new Date(), orderItems);
+        orderModel.placeOrder(orderDTO);
+    }
 }
