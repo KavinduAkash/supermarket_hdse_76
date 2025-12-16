@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import lk.ijse.supermarket_hdse_76.dto.CustomerDTO;
+import lk.ijse.supermarket_hdse_76.dto.ItemDTO;
 import lk.ijse.supermarket_hdse_76.model.CustomerModel;
 import lk.ijse.supermarket_hdse_76.model.ItemModel;
 
@@ -32,8 +33,19 @@ public class OrderController implements Initializable {
     @FXML
     private Label lblCustomerSalaryValue; 
     
+    @FXML
+    private Label lblItemNameValue;
+
+    @FXML
+    private Label lblItemPriceValue;
+
+    @FXML
+    private Label lblItemQtyValue;
+    
+    
     private CustomerModel customerModel = new CustomerModel();
     private ItemModel itemModel = new ItemModel();
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -89,6 +101,25 @@ public class OrderController implements Initializable {
             lblCustomerNameValue.setText(customerDTO.getName());
             lblCustomerAddressValue.setText(customerDTO.getAddress());
             lblCustomerSalaryValue.setText(String.valueOf(customerDTO.getSalary()));
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
+        }
+        
+    }
+    
+    @FXML
+    private void handleSelectItemId(ActionEvent event) {
+
+        try {
+        
+            String selectedId = comboItemId.getSelectionModel().getSelectedItem();
+            ItemDTO itemDTO = itemModel.searchItem(selectedId);
+            
+            lblItemNameValue.setText(itemDTO.getName());
+            lblItemQtyValue.setText(String.valueOf(itemDTO.getQty()));
+            lblItemPriceValue.setText(String.valueOf(itemDTO.getPrice()));
             
         } catch(Exception e) {
             e.printStackTrace();
