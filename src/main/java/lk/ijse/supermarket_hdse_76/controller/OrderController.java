@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -66,5 +67,14 @@ public class OrderController implements Initializable {
             new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
         }
     }
+    
+    @FXML
+    private void handleSelectCustomerId(ActionEvent event) {
+
+        String selectedItem = comboCustomerId.getSelectionModel().getSelectedItem();
+        System.out.println("SELECTED ITEM: " + selectedItem);
+        
+    }
+
     
 }

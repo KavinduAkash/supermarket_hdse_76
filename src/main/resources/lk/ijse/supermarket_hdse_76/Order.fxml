@@ -32,7 +32,7 @@
                   <VBox layoutX="83.0" layoutY="14.0" prefHeight="45.0" prefWidth="156.0">
                      <children>
                         <Label text="Customer ID:" />
-                        <ComboBox fx:id="comboCustomerId" prefWidth="150.0" style="-fx-border-color: black; -fx-border-width: 0 0 1px 0; -fx-background-color: none;" />
+                        <ComboBox fx:id="comboCustomerId" onAction="#handleSelectCustomerId" prefWidth="150.0" style="-fx-border-color: black; -fx-border-width: 0 0 1px 0; -fx-background-color: none;" />
                      </children>
                   </VBox>
                   <VBox layoutX="249.0" layoutY="14.0" prefHeight="45.0" prefWidth="156.0">
