@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import lk.ijse.supermarket_hdse_76.dto.CustomerDTO;
 import lk.ijse.supermarket_hdse_76.model.CustomerModel;
 import lk.ijse.supermarket_hdse_76.model.ItemModel;
@@ -19,8 +20,17 @@ public class OrderController implements Initializable {
     @FXML
     private ComboBox<String> comboCustomerId;
     
-     @FXML
+    @FXML
     private ComboBox<String> comboItemId;
+     
+    @FXML
+    private Label lblCustomerAddressValue;
+
+    @FXML
+    private Label lblCustomerNameValue;
+
+    @FXML
+    private Label lblCustomerSalaryValue; 
     
     private CustomerModel customerModel = new CustomerModel();
     private ItemModel itemModel = new ItemModel();
@@ -71,8 +81,19 @@ public class OrderController implements Initializable {
     @FXML
     private void handleSelectCustomerId(ActionEvent event) {
 
-        String selectedItem = comboCustomerId.getSelectionModel().getSelectedItem();
-        System.out.println("SELECTED ITEM: " + selectedItem);
+        try {
+        
+            String selectedId = comboCustomerId.getSelectionModel().getSelectedItem();
+            CustomerDTO customerDTO = customerModel.searchCustomer(selectedId);
+
+            lblCustomerNameValue.setText(customerDTO.getName());
+            lblCustomerAddressValue.setText(customerDTO.getAddress());
+            lblCustomerSalaryValue.setText(String.valueOf(customerDTO.getSalary()));
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
+        }
         
     }
 
