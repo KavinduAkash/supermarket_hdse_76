@@ -1,4 +1,4 @@
-package lk.ijse.supermarket_hdse_76;
+package lk.ijse.supermarket_hdse_76.dto;
 
 public class CustomerDTO {
 

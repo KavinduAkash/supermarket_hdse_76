@@ -1,10 +1,11 @@
-package lk.ijse.supermarket_hdse_76;
+package lk.ijse.supermarket_hdse_76.controller;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import lk.ijse.supermarket_hdse_76.App;
 
 public class LoginController {
 

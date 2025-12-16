@@ -1,4 +1,4 @@
-package lk.ijse.supermarket_hdse_76;
+package lk.ijse.supermarket_hdse_76.controller;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -18,6 +18,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.supermarket_hdse_76.dto.CustomerDTO;
+import lk.ijse.supermarket_hdse_76.model.CustomerModel;
 
 public class CustomerController implements Initializable {  
     
@@ -59,7 +61,7 @@ public class CustomerController implements Initializable {
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
         
-        loadCustomerTable();
+//        loadCustomerTable();
         
     }
     

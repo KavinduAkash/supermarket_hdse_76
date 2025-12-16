@@ -4,6 +4,9 @@ module lk.ijse.supermarket_hdse_76 {
     requires java.base;
     requires java.sql;
 
-    opens lk.ijse.supermarket_hdse_76 to javafx.fxml;
+    opens lk.ijse.supermarket_hdse_76.controller to javafx.fxml;
+    opens lk.ijse.supermarket_hdse_76.dto to javafx.base;
     exports lk.ijse.supermarket_hdse_76;
+    exports lk.ijse.supermarket_hdse_76.controller;
+    exports lk.ijse.supermarket_hdse_76.dto;
 }

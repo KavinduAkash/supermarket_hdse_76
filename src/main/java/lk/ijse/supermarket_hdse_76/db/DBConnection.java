@@ -1,4 +1,4 @@
-package lk.ijse.supermarket_hdse_76;
+package lk.ijse.supermarket_hdse_76.db;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
