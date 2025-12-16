@@ -80,12 +80,12 @@
                   <VBox layoutX="83.0" layoutY="154.0" prefHeight="45.0" prefWidth="156.0">
                      <children>
                         <Label text="Order QTY:" />
-                        <TextField style="-fx-background-color: none; -fx-border-color: black; -fx-border-width: 0 0 1px 0;" />
+                        <TextField fx:id="orderQtyField" style="-fx-background-color: none; -fx-border-color: black; -fx-border-width: 0 0 1px 0;" />
                      </children>
                   </VBox>
                   <HBox alignment="CENTER_RIGHT" layoutX="394.0" layoutY="154.0" prefHeight="45.0" prefWidth="260.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="305.0" style="-fx-background-color: purple;" text="Add to cart" textFill="WHITE" />
+                        <Button mnemonicParsing="false" onAction="#handlAddToCart" prefHeight="26.0" prefWidth="305.0" style="-fx-background-color: purple;" text="Add to cart" textFill="WHITE" />
                      </children>
                   </HBox>
                </children>
