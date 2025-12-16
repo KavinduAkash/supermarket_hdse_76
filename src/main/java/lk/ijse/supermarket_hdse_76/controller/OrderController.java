@@ -1,26 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package lk.ijse.supermarket_hdse_76.controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import lk.ijse.supermarket_hdse_76.dto.CustomerDTO;
+import lk.ijse.supermarket_hdse_76.model.CustomerModel;
 
-/**
- * FXML Controller class
- *
- * @author kavinduakash
- */
 public class OrderController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    private CustomerModel customerModel = new CustomerModel();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        
+    } 
+    
+    private void loadCustomerIds() {
+        try {
+            List<CustomerDTO> customerList = customerModel.getAllCustomers();
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
+        }
+    }
     
 }
