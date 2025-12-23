@@ -40,7 +40,7 @@ public class ItemModel {
     
     public boolean decreaseItemQty(int itemId, int qty) throws SQLException {
     
-        boolean isUpdated = CrudUtil.execute("UPDATE item SET qty=qty-? WHEREXXXXXXXXXXXXX id=?",
+        boolean isUpdated = CrudUtil.execute("UPDATE item SET qty=qty-? WHERE id=?",
                 qty,
                 itemId);
         

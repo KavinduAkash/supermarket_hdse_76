@@ -183,23 +183,32 @@ public class OrderController implements Initializable {
         String itemPrice = lblItemPriceValue.getText();
         String orderQty = orderQtyField.getText(); // ordered qty
        
-        if(Integer.parseInt(itemQty) >= Integer.parseInt(orderQty)) {
+        if(itemId!=null) {
+            if(orderQty!=null) {
+                if(Integer.parseInt(itemQty) >= Integer.parseInt(orderQty)) {
 
-            OrderItemTM orderItemTM = new OrderItemTM(
-                Integer.parseInt(itemId),
-                itemName,
-                Double.parseDouble(itemPrice),
-                Integer.parseInt(orderQty),
-                Double.parseDouble(itemPrice)*Integer.parseInt(orderQty)
-            );
-        
-            orderItemObList.add(orderItemTM);
-        
-            loadOrderItemTbl();
-            
+                OrderItemTM orderItemTM = new OrderItemTM(
+                    Integer.parseInt(itemId),
+                    itemName,
+                    Double.parseDouble(itemPrice),
+                    Integer.parseInt(orderQty),
+                    Double.parseDouble(itemPrice)*Integer.parseInt(orderQty)
+                );
+
+                orderItemObList.add(orderItemTM);
+
+                loadOrderItemTbl();
+
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Invalid Qty!").show();
+                }
+            } else {    
+                new Alert(Alert.AlertType.ERROR, "Invalid order qty!").show();
+            }
         } else {
-            new Alert(Alert.AlertType.ERROR, "Invalid Qty!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid Item ID!").show();
         }
+        
        
     }
     

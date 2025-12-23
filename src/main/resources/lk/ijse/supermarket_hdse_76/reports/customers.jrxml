@@ -1,0 +1,82 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="customers" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d322805a-8cc6-419b-8c25-80329cabdae9">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MYSQL-SUPERMARKET"/>
+	<query language="SQL"><![CDATA[SELECT * FROM customer]]></query>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="address"/>
+		<property name="com.jaspersoft.studio.field.label" value="address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="salary" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="salary"/>
+		<property name="com.jaspersoft.studio.field.label" value="salary"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="49" splitType="Stretch">
+		<element kind="staticText" uuid="ee14ede9-3dd4-492b-910b-5fdfbabcfa4a" x="156" y="10" width="242" height="26" forecolor="#FF0905" fontSize="21.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Customer Report]]></text>
+		</element>
+	</title>
+	<pageHeader height="22" splitType="Stretch">
+		<element kind="staticText" uuid="ff077df6-7e97-4ef5-8136-ee88d3a9f6ce" x="167" y="0" width="220" height="20" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[IJSE Supermarkets PLC]]></text>
+		</element>
+	</pageHeader>
+	<columnHeader height="45" splitType="Stretch">
+		<element kind="staticText" uuid="cbfb9bce-97d3-402f-8630-50deeec1d4a9" x="71" y="15" width="60" height="20" fontSize="13.0" vTextAlign="Middle">
+			<text><![CDATA[#ID]]></text>
+		</element>
+		<element kind="staticText" uuid="655f2142-c5d7-461b-b57a-66f6f2594c44" x="131" y="15" width="140" height="20" fontSize="13.0" vTextAlign="Middle">
+			<text><![CDATA[Name]]></text>
+		</element>
+		<element kind="staticText" uuid="528cbf57-ae54-4f49-9065-e9208203cdb7" x="271" y="15" width="140" height="20" fontSize="13.0" vTextAlign="Middle">
+			<text><![CDATA[Address]]></text>
+		</element>
+		<element kind="staticText" uuid="2f204009-0802-4f30-b1fe-353f76a3603e" x="411" y="15" width="80" height="20" fontSize="13.0" hTextAlign="Right" vTextAlign="Middle">
+			<text><![CDATA[Salary]]></text>
+		</element>
+		<element kind="line" uuid="c3fae7dd-b90c-41e7-a22a-622e993418d9" x="71" y="39" width="420" height="1">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<element kind="textField" uuid="6755fc7b-6150-4e91-b67d-afe10899057d" x="71" y="0" width="60" height="20" vTextAlign="Middle">
+				<expression><![CDATA[$F{id}]]></expression>
+			</element>
+			<element kind="textField" uuid="d5346be3-f507-4e1f-9e51-c94de60fbd00" x="130" y="0" width="140" height="20" vTextAlign="Middle">
+				<expression><![CDATA[$F{name}]]></expression>
+			</element>
+			<element kind="textField" uuid="b6fdf93d-3787-4db5-a4a4-dbb886b9cb44" x="270" y="0" width="140" height="20" vTextAlign="Middle">
+				<expression><![CDATA[$F{address}]]></expression>
+			</element>
+			<element kind="textField" uuid="462d68c3-6d26-45d4-9ee9-12d078be7db0" x="410" y="0" width="80" height="20" hTextAlign="Right" vTextAlign="Middle">
+				<expression><![CDATA[$F{salary}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<columnFooter splitType="Stretch"/>
+	<pageFooter height="28" splitType="Stretch">
+		<element kind="staticText" uuid="7bc51255-cadc-433f-8310-352b199cbcd8" x="240" y="5" width="100" height="18" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Thank you!]]></text>
+		</element>
+	</pageFooter>
+	<summary height="37" splitType="Stretch">
+		<element kind="staticText" uuid="11a66760-5910-42a0-b896-c7deb9617c12" x="195" y="9" width="190" height="18" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Developed by Kavindu]]></text>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</summary>
+</jasperReport>

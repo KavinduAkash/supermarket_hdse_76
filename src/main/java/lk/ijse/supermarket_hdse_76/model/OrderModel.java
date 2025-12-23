@@ -15,9 +15,8 @@ public class OrderModel {
                 
         Connection conn = DBConnection.getInstance().getConnection();
         
-        try {
+        try{
             conn.setAutoCommit(false);
-            
             boolean isSavedOrder = CrudUtil.execute(
                 "INSERT INTO orders (date, customer_id) VALUES (?,?)", 
                 orderDTO.getOrderDate(),

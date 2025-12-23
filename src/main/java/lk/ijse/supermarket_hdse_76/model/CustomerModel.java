@@ -1,5 +1,6 @@
 package lk.ijse.supermarket_hdse_76.model;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import lk.ijse.supermarket_hdse_76.dto.CustomerDTO;
 import lk.ijse.supermarket_hdse_76.db.DBConnection;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class CustomerModel {
  
@@ -105,6 +112,25 @@ public class CustomerModel {
         }
         
         return customerList;
+        
+    }
+    
+    
+    public void printCustomerReport() throws JRException, SQLException {
+        
+        Connection conn = DBConnection.getInstance().getConnection();
+        
+        // Step 01
+        InputStream reportObject = getClass().getResourceAsStream("/lk/ijse/supermarket_hdse_76/reports/customers.jrxml");
+        
+        // Step 02
+        JasperReport jr = JasperCompileManager.compileReport(reportObject); // this method thorws JRException
+        
+        // Step 03
+        JasperPrint jp = JasperFillManager.fillReport(jr, null, conn); // fillReport(japerreport, params, connection_obj)
+        
+        // Step 04
+        JasperViewer.viewReport(jp, false);
         
     }
 }

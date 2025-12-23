@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -61,7 +62,7 @@ public class CustomerController implements Initializable {
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
         
-//        loadCustomerTable();
+        loadCustomerTable();
         
     }
     
@@ -212,6 +213,18 @@ public class CustomerController implements Initializable {
             e.printStackTrace();
         }
         
+    }
+    
+    @FXML
+    private void handlePrint(ActionEvent event) {
+        try {
+        
+            customerModel.printCustomerReport();
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
+        }
     }
     
 }
